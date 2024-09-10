@@ -5,8 +5,12 @@ class BrandService {
     }
 
     async fetchAllBrands() {
-        const brands = this.Brand.findAll();
-        return brands;
+        return this.Brand.findAll({
+            where: { 
+            }
+        }).catch( err => {
+            return (err)
+        })
     }
     async fetchBrandById(id){
         const brandId = this.Brand.findByPk(id);

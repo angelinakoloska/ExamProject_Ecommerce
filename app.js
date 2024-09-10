@@ -7,10 +7,21 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var db = require('./models');
-db.sequelize.sync({ force: false});
+db.sequelize.sync({ force: false });
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+var adminRouter = require('./routes/admin');
+var authRouter = require('./routes/auth');
+var initRouter = require('./routes/init');
+var brandRouter = require('./routes/brands');
+var categoryRouter = require('./routes/categories');
+var productRouter = require('./routes/products');
+var cartRouter = require('./routes/cart');
+var orderRouter = require('./routes/orders');
+var roleRouter = require('./routes/roles');
+var userRouter = require('./routes/users');
+var searchRouter = require('./routes/search');
+var membershipsRouter = require('./routes/memberships');
 
 var app = express();
 
@@ -24,8 +35,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
+app.use('/auth', authRouter);
+app.use('/init', initRouter);
+app.use('/brands', brandRouter);
+app.use('/categories', categoryRouter);
+app.use('/products', productRouter);
+app.use('/cart', cartRouter);
+app.use('/orders', orderRouter);
+app.use('/roles', roleRouter);
+app.use('/users', userRouter);
+app.use('/search', searchRouter);
+app.use('/memberships', membershipsRouter);
 
 
 app.use(bodyParser.json());

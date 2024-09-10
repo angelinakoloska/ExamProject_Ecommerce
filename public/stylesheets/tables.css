@@ -1,0 +1,34 @@
+:root {
+    --table-head-bg: #14d1de;
+    --table-body-bg-primary: #fff;
+    --table-body-bg-secondary: #1ce6c7;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+table thead {
+    border: 1px solid #000;
+}
+
+thead tr {
+    background-color: var(--table-head-bg);
+}
+
+table tbody {
+    border: 1px solid #000;
+}
+
+tbody tr {
+    background-color: var(--table-body-bg-primary);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--table-body-bg-secondary);
+}
+tbody td, table th {
+    /* border: 1px solid #000; */
+}

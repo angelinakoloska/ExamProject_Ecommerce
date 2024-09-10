@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DataTypes.STRING,
             allowNull: false
         },
-        password: {
+        encryptedPassword: {
             type: Sequelize.DataTypes.BLOB,
             allowNull: false
         },

@@ -5,8 +5,12 @@ class CategoryyService {
     }
 
     async fetchAllCategories() {
-        const categories = this.Category.findAll();
-        return categories;
+        return this.Category.findAll({
+            where: { 
+            }
+        }).catch( err => {
+            return (err)
+        })
     }
     async fetchCategoryById(id){
         const categoryId = this.Category.findByPk(id);
