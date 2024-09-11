@@ -9,7 +9,7 @@ const userService = new UserService(db);
 router.post('/', ensureAdmin,ensureAuth, async (req, res) => {
   try {
     const user = await userService.generateUser(req.body);
-    res.status(201).json(user);
+    res.status(201).json(user)
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ error: 'Failed to create user' });
@@ -29,10 +29,10 @@ router.get('/:id',ensureAdmin,ensureAuth, async (req, res) => {
   }
 });
 
-router.get('/', ensureAdmin,ensureAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const users = await userService.fetchAllUsers();
-    res.status(200).json(users);
+    res.render('users', {users: users});
   } catch (error) {
     console.error('Error fetching users:', error);
     res.status(500).json({ error: 'Failed to get users' });

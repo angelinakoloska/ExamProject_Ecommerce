@@ -18,7 +18,7 @@ class UserService {
         return userByUsername;
     }
     async fetchAllUsers() {
-        const users = await  this.User.findAll();
+        const users = await this.User.findAll();
         return users;
     }
     async modifyUser(id, data) {

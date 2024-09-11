@@ -8,8 +8,12 @@ class RoleService {
         return role;
     }
     async fetchAllRoles() {
-        const roles = await this.Role.findAll();
-        return roles;
+        return this.Role.findAll({
+            where: { 
+            }
+        }).catch( err => {
+            return (err)
+        })  
     }
     async fetchRoleByName(name) {
         const roleName = await this.Role.findOne({where: {name}});

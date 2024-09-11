@@ -23,8 +23,8 @@ router.post('/', ensureAuth, ensureAdmin, async function(req, res) {
 
     // }
 
-    // I had to use ChatGPT here, because I was unable to create the search by myself
-        const { query, category, brand } = req.body;
+    
+    const { query, category, brand } = req.body;
 
     try {
         let searchQuery = `

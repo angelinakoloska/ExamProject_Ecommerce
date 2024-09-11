@@ -1,24 +1,18 @@
-// models/Role.js
 module.exports = (sequelize, Sequelize) => {
     const Role = sequelize.define('Role', {
-        Id: {
-            type: Sequelize.DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        Name: {
-            type: Sequelize.DataTypes.STRING,
-            defaultValue: "User",
-            validate: {
-                isIn: {
-                    args: [['User', 'Admin']],
-                    msg: "Role must be 'User' or 'Admin'"
-                }
-            }
-        }   
-    }, {
-        timestamps: true 
-    });
-
+      id: {
+        type: Sequelize.DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      name: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+        unique: true
+      }
+    }, {timestamps: true});
+    Role.associate = function (models) {
+      Role.hasMany(models.User, { foreignKey: {allowNull: false}});
+    }
     return Role;
-};
+  }
